@@ -1,6 +1,9 @@
 server:
   port: ${SERVER_PORT:3001}
   address: ${SERVER_ADDRESS:0.0.0.0}
+  # Honor reverse proxy headers so generated URLs use correct https scheme/host/port.
+  forward-headers-strategy: framework
+  use-forward-headers: true
 
 spring:
   application:
@@ -21,8 +24,14 @@ app:
     # When true, enable a global allow-all CORS configuration (all origins/headers/methods, allowCredentials=false).
     # Default is true but can be disabled by setting the environment variable ALLOW_ALL_CORS=false.
     allow-all: ${ALLOW_ALL_CORS:true}
+  # Optional override for preview base URL used by OpenAPI servers fallback.
+  preview:
+    base-url: ${APP_PREVIEW_BASE_URL:https://vscode-internal-25043-beta.beta01.cloud.kavia.ai:3003}
 
 management:
+  # Keep actuator endpoints accessible under the same base path (root) and through HTTPS.
+  server:
+    base-path: /
   endpoints:
     web:
       exposure:

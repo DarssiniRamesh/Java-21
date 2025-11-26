@@ -2,6 +2,7 @@ com/example/java21/repository/QuestionRepository.class
 com/example/java21/web/RestExceptionHandler.class
 com/example/java21/web/dto/AnswerResponse.class
 com/example/java21/Java21BackendApplication.class
+com/example/java21/config/CorsConfig$1.class
 com/example/java21/repository/AnswerRepository.class
 com/example/java21/web/HealthController.class
 com/example/java21/service/ResourceNotFoundException.class

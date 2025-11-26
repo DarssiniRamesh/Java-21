@@ -15,6 +15,13 @@ spring:
         jdbc:
           time_zone: UTC
 
+# Feature flags and app-level settings
+app:
+  cors:
+    # When true, enable a global allow-all CORS configuration (all origins/headers/methods, allowCredentials=false).
+    # Default is true but can be disabled by setting the environment variable ALLOW_ALL_CORS=false.
+    allow-all: ${ALLOW_ALL_CORS:true}
+
 management:
   endpoints:
     web:
