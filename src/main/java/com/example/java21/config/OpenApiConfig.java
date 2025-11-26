@@ -26,7 +26,7 @@ public class OpenApiConfig {
             )
             .externalDocs(new ExternalDocumentation()
                 .description("Swagger UI")
-                .url("/swagger-ui.html")
+                .url("/docs")
             );
     }
 }

@@ -6,7 +6,7 @@ What’s included:
 - Maven project targeting Java 21
 - Dependencies: spring-boot-starter-web, spring-boot-starter-actuator, springdoc-openapi-starter-webmvc-ui
 - Health endpoint at GET /health returning {"status":"ok"}
-- Swagger UI available at /swagger-ui.html
+- Swagger UI available at /docs
 
 Build:
 - Preferred: ensure wrapper is executable and use it
@@ -33,7 +33,7 @@ Run (local):
 - ./mvnw spring-boot:run
 
 Maven Wrapper:
-- This project includes the Maven Wrapper (mvnw, mvnw.cmd, and .mvn/wrapper/*). The wrapper JAR is checked in, so no download is required.
+- This project includes the Maven Wrapper (mvnw, mvnw.cmd, and .mvn/wrapper/*). The wrapper JAR will be downloaded automatically if missing.
 - Wrapper scripts are aligned with Maven Wrapper 3.2.0 and will download Apache Maven 3.9.7 as configured.
 - The wrapper configuration is defined in .mvn/wrapper/maven-wrapper.properties with
   - wrapperUrl pointing to maven-wrapper-3.2.0.jar

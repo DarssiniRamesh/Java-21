@@ -104,9 +104,10 @@ WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
 # If the wrapper jar doesn't exist, try to download it from wrapperUrl in properties
 if [ ! -f "$WRAPPER_JAR" ]; then
   PROPERTIES_FILE="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
+  MVNW_REPOURL="${MVNW_REPOURL:-}"
   if [ -f "$PROPERTIES_FILE" ]; then
     # look for wrapperUrl
-    wrapperUrl=`sed -n 's/^wrapperUrl=//p' "$PROPERTIES_FILE"`
+    wrapperUrl=$(sed -n 's/^wrapperUrl=//p' "$PROPERTIES_FILE")
     if [ -z "$wrapperUrl" ]; then
       # fallback to default jar location
       wrapperUrl="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar"
@@ -115,13 +116,34 @@ if [ ! -f "$WRAPPER_JAR" ]; then
     wrapperUrl="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar"
   fi
 
+  # Allow overriding the repo base via MVNW_REPOURL like official wrapper
+  if [ -n "$MVNW_REPOURL" ]; then
+    wrapperUrl="$MVNW_REPOURL/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar"
+  fi
+
   mkdir -p "$MAVEN_PROJECTBASEDIR/.mvn/wrapper"
+
+  DOWNLOAD_OK=false
   if command -v curl >/dev/null 2>&1; then
-    curl -fsSL "$wrapperUrl" -o "$WRAPPER_JAR"
+    curl -fsSL "$wrapperUrl" -o "$WRAPPER_JAR" && DOWNLOAD_OK=true
   elif command -v wget >/dev/null 2>&1; then
-    wget -q "$wrapperUrl" -O "$WRAPPER_JAR"
-  else
-    echo "Error: Please install 'curl' or 'wget' to download Maven Wrapper." >&2
+    wget -q "$wrapperUrl" -O "$WRAPPER_JAR" && DOWNLOAD_OK=true
+  fi
+
+  # Fallback to Java-based downloader if curl/wget unavailable or failed
+  if [ "$DOWNLOAD_OK" != "true" ] || [ ! -s "$WRAPPER_JAR" ]; then
+    if [ -f "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.java" ]; then
+      if command -v javac >/dev/null 2>&1; then
+        # Compile the downloader and attempt download
+        javac -d "$MAVEN_PROJECTBASEDIR/.mvn/wrapper" "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.java" >/dev/null 2>&1 || true
+        $JAVA_RUNNER -cp "$MAVEN_PROJECTBASEDIR/.mvn/wrapper" MavenWrapperDownloader "$MAVEN_PROJECTBASEDIR" >/dev/null 2>&1 || true
+      fi
+    fi
+  fi
+
+  if [ ! -s "$WRAPPER_JAR" ]; then
+    echo "Error: Maven Wrapper JAR could not be downloaded. Checked URL: $wrapperUrl" >&2
+    echo "Install 'curl' or 'wget', or ensure Java/Javac are available for fallback." >&2
     exit 1
   fi
 fi

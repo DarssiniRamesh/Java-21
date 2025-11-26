@@ -37,13 +37,17 @@ set WRAPPER_PROPERTIES=%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.propert
 set WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
 
 IF NOT EXIST "%WRAPPER_JAR%" (
+  set "DOWNLOAD_URL="
   IF EXIST "%WRAPPER_PROPERTIES%" (
     FOR /F "usebackq tokens=1,2 delims==" %%A IN ("%WRAPPER_PROPERTIES%") DO (
-      IF "%%A"=="wrapperUrl" SET DOWNLOAD_URL=%%B
+      IF "%%A"=="wrapperUrl" SET "DOWNLOAD_URL=%%B"
     )
   )
-  IF "%DOWNLOAD_URL%"=="" SET DOWNLOAD_URL=https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar
+  IF "%DOWNLOAD_URL%"=="" SET "DOWNLOAD_URL=https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar"
+  IF NOT "%MVNW_REPOURL%"=="" SET "DOWNLOAD_URL=%MVNW_REPOURL%/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar"
+
   IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\wrapper" MKDIR "%MAVEN_PROJECTBASEDIR%\.mvn\wrapper"
+
   WHERE curl >NUL 2>&1
   IF %ERRORLEVEL% EQU 0 (
     curl -fsSL "%DOWNLOAD_URL%" -o "%WRAPPER_JAR%"
@@ -51,10 +55,24 @@ IF NOT EXIST "%WRAPPER_JAR%" (
     WHERE wget >NUL 2>&1
     IF %ERRORLEVEL% EQU 0 (
       wget -q "%DOWNLOAD_URL%" -O "%WRAPPER_JAR%"
-    ) ELSE (
-      ECHO Error: Please install 'curl' or 'wget' to download Maven Wrapper.
-      EXIT /B 1
     )
+  )
+
+  REM Fallback to Java-based downloader if curl/wget unavailable or failed
+  IF NOT EXIST "%WRAPPER_JAR%" (
+    IF EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\MavenWrapperDownloader.java" (
+      WHERE javac >NUL 2>&1
+      IF %ERRORLEVEL% EQU 0 (
+        javac -d "%MAVEN_PROJECTBASEDIR%\.mvn\wrapper" "%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\MavenWrapperDownloader.java" 1>NUL 2>&1
+        java -cp "%MAVEN_PROJECTBASEDIR%\.mvn\wrapper" MavenWrapperDownloader "%MAVEN_PROJECTBASEDIR%" 1>NUL 2>&1
+      )
+    )
+  )
+
+  IF NOT EXIST "%WRAPPER_JAR%" (
+    ECHO Error: Maven Wrapper JAR could not be downloaded. Checked URL: %DOWNLOAD_URL%
+    ECHO Install 'curl' or 'wget', or ensure Java/Javac are available for fallback.
+    EXIT /B 1
   )
 )
 

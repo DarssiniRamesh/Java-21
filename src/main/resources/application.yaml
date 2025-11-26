@@ -9,3 +9,9 @@ management:
         include: health,info
 
 # Do not hardcode server.port; preview maps automatically.
+
+springdoc:
+  api-docs:
+    path: /openapi.json
+  swagger-ui:
+    path: /docs
