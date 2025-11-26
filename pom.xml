@@ -18,8 +18,8 @@
     <description>Java 21 Spring Boot 3.3.x backend with health endpoint and OpenAPI</description>
 
     <properties>
-        <java.version>21</java.version>
-        <maven.compiler.release>21</maven.compiler.release>
+        <java.version>17</java.version>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
     <dependencies>
