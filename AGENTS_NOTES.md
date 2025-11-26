@@ -5,7 +5,7 @@
   - prod: PostgreSQL (env overrides via SPRING_DATASOURCE_* and SPRING_JPA_HIBERNATE_DDL_AUTO)
 
 - Startup notes:
-  - No references to /home/kavia/workspace/code-generation/postgres-db_workspace/postgres-db/db_visualizer exist in this project. Backend starts independently.
+  - No references to any db_visualizer directory exist in this project. Backend starts independently.
   - Preview/Runner should start PostgreSQL via: postgres-db_workspace/postgres-db (compose)
     - Example:
       cd ../postgres-db_workspace/postgres-db && ./start.sh up

@@ -22,8 +22,8 @@
 #   ./start.sh up
 #
 # Notes:
-# - This script intentionally avoids any legacy paths like:
-#   /home/kavia/workspace/code-generation/postgres-db_workspace/postgres-db/db_visualizer
+# - This script intentionally avoids any legacy paths such as any db_visualizer directory.
+# - Use the compose setup under ../postgres-db_workspace/postgres-db.
 # - The app binds to 0.0.0.0:${SERVER_PORT:-3001} by default.
 
 set -eu
