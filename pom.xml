@@ -18,7 +18,8 @@
     <description>Java 21 Spring Boot 3.3.x backend with health endpoint and OpenAPI</description>
 
     <properties>
-        <!-- Build with Java 17 to avoid requiring Maven Toolchains / ~/.m2/toolchains.xml -->
+        <!-- Build with Java 17 to avoid requiring Maven Toolchains / ~/.m2/toolchains.xml.
+             Do not add maven-toolchains-plugin here; we rely solely on maven-compiler-plugin <release>17</release>. -->
         <java.version>17</java.version>
         <maven.compiler.release>17</maven.compiler.release>
     </properties>

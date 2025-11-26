@@ -13,6 +13,7 @@ import java.util.Map;
 /**
  * PUBLIC_INTERFACE
  * HealthController exposes a simple health endpoint.
+ * Requires spring-boot-starter-web and is independent of actuator (actuator is included for /actuator/health).
  */
 @RestController
 @Tag(name = "Health", description = "Health check endpoints")

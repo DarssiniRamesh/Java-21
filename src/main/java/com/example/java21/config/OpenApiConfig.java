@@ -8,6 +8,7 @@ import io.swagger.v3.oas.models.OpenAPI;
 /**
  * PUBLIC_INTERFACE
  * Minimal OpenAPI configuration to populate metadata.
+ * Uses springdoc-openapi-starter-webmvc-ui (2.6.0), compatible with Spring Boot 3.3.x.
  */
 @org.springframework.context.annotation.Configuration
 public class OpenApiConfig {

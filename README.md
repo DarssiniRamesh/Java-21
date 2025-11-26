@@ -9,7 +9,9 @@ What’s included:
 - Swagger UI available at /swagger-ui.html
 
 Build:
-- Preferred (with JDK 21 available via Maven Toolchains): ./mvnw -q -DskipTests package
+- Preferred: ensure wrapper is executable and use it
+  - chmod +x mvnw
+  - ./mvnw -q -DskipTests package
 - Fallback (when only JDK 17 is installed): the project will compile targeting Java 17 automatically due to fallback settings.
 
 Toolchains:
@@ -31,15 +33,15 @@ Run (local):
 - ./mvnw spring-boot:run
 
 Maven Wrapper:
-- This project includes the Maven Wrapper (mvnw, mvnw.cmd, and .mvn/wrapper/*).
+- This project includes the Maven Wrapper (mvnw, mvnw.cmd, and .mvn/wrapper/*). The wrapper JAR is checked in, so no download is required.
 - Wrapper scripts are aligned with Maven Wrapper 3.2.0 and will download Apache Maven 3.9.7 as configured.
 - The wrapper configuration is defined in .mvn/wrapper/maven-wrapper.properties with
   - wrapperUrl pointing to maven-wrapper-3.2.0.jar
   - distributionUrl pointing to Apache Maven 3.9.7
 - The mvnw script resolves the wrapper JAR at .mvn/wrapper/maven-wrapper.jar and will download it if missing.
 
-Fallback script (environment without wrapper JAR downloads):
-- You can use the provided ./mvn.sh which simply invokes the system 'mvn' command if available:
+Fallback script (only if mvnw cannot be used):
+- Only when mvnw cannot be executed in your environment, you may use the provided ./mvn.sh which invokes the system 'mvn' command if available:
   - chmod +x mvn.sh
   - ./mvn.sh -q -DskipTests package
   - ./mvn.sh spring-boot:run
