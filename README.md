@@ -31,6 +31,8 @@ Run (local):
 - ./mvnw spring-boot:run
 
 Maven Wrapper:
-- This project includes the Maven Wrapper (mvnw, mvnw.cmd, and .mvn/wrapper/*). If mvnw is not executable on your system, run: chmod +x mvnw
+- This project includes the Maven Wrapper (mvnw, mvnw.cmd, and .mvn/wrapper/*).
+- Wrapper scripts are aligned with Maven Wrapper 3.2.0 and will download Apache Maven 3.9.7 as configured.
+- If mvnw is not executable on your system, run: chmod +x mvnw
 
 Note: Do not hardcode ports; preview system maps ports automatically.
