@@ -1,3 +1,17 @@
 # Java-21
-This file is meant for a new modernized code - Java 21 - Springboot 
-Spring Boot, PostgreSQL, JPA, Hibernate RESTful CRUD API Example -> Old version here is updated to Java 21 in this repo
+
+This module contains a Java 21 compatible Spring Boot 3.3.x backend.
+
+What’s included:
+- Maven project targeting Java 21
+- Dependencies: spring-boot-starter-web, spring-boot-starter-actuator, springdoc-openapi-starter-webmvc-ui
+- Health endpoint at GET /health returning {"status":"ok"}
+- Swagger UI available at /swagger-ui.html
+
+Build:
+- mvn -q -DskipTests package
+
+Run (local):
+- mvn spring-boot:run
+
+Note: Do not hardcode ports; preview system maps ports automatically.
