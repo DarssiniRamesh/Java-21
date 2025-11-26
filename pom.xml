@@ -18,11 +18,9 @@
     <description>Java 21 Spring Boot 3.3.x backend with health endpoint and OpenAPI</description>
 
     <properties>
-        <!-- Compile with Java 17 to work without Maven Toolchains/JDK 21 -->
+        <!-- Build with Java 17 to avoid requiring Maven Toolchains / ~/.m2/toolchains.xml -->
         <java.version>17</java.version>
         <maven.compiler.release>17</maven.compiler.release>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -68,18 +66,13 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Compiler: Prefer Toolchains (JDK 21) when available; otherwise use fallback 17 configuration -->
+            <!-- Compiler: use release 17 explicitly, avoid separate source/target to prevent conflicts -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <!-- Fallback config if toolchain is not resolved (e.g., only JDK 17 present) -->
                     <release>${maven.compiler.release}</release>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-
-                    <!-- Enable incremental compilation and show deprecations -->
                     <compilerArgs>
                         <arg>-Xlint:deprecation</arg>
                     </compilerArgs>
