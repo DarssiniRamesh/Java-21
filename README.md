@@ -9,9 +9,9 @@ What’s included:
 - Swagger UI available at /swagger-ui.html
 
 Build:
-- mvn -q -DskipTests package
+- ./mvnw -q -DskipTests package
 
 Run (local):
-- mvn spring-boot:run
+- ./mvnw spring-boot:run
 
 Note: Do not hardcode ports; preview system maps ports automatically.
