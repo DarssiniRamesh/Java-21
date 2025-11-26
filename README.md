@@ -40,11 +40,7 @@ Maven Wrapper:
   - distributionUrl pointing to Apache Maven 3.9.7
 - The mvnw script resolves the wrapper JAR at .mvn/wrapper/maven-wrapper.jar and will download it if missing.
 
-Fallback script (only if mvnw cannot be used):
-- Only when mvnw cannot be executed in your environment, you may use the provided ./mvn.sh which invokes the system 'mvn' command if available:
-  - chmod +x mvn.sh
-  - ./mvn.sh -q -DskipTests package
-  - ./mvn.sh spring-boot:run
+
 
 Note:
 - Do not hardcode ports; preview system maps ports automatically.
