@@ -2,6 +2,13 @@
 
 Java 21 Spring Boot 3.3.x backend with OpenAPI, CRUD for Questions/Answers, and H2 (dev)/PostgreSQL (prod) profiles.
 
+Important: Database startup path (compose-based)
+- Use the compose setup under postgres-db_workspace/postgres-db.
+- Do NOT use or reference any db_visualizer directory.
+- Commands:
+  cd ../postgres-db_workspace/postgres-db
+  ./start.sh up
+
 Features:
 - Java 21 toolchain with Spring Boot 3.3.x
 - CRUD for Questions and Answers

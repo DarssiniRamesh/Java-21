@@ -6,6 +6,10 @@
 
 - Startup notes:
   - No references to /home/kavia/workspace/code-generation/postgres-db_workspace/postgres-db/db_visualizer exist in this project. Backend starts independently.
+  - Preview/Runner should start PostgreSQL via: postgres-db_workspace/postgres-db (compose)
+    - Example:
+      cd ../postgres-db_workspace/postgres-db && ./start.sh up
+    - Do not cd into any db_visualizer directory; it does not exist in this workspace.
   - Current environment does not support Java release 21 for compilation; Maven compiler set to release=17 to allow startup and verification. Revert to 21 when environment supports it.
 
 - Server binding:
