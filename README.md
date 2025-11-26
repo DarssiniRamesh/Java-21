@@ -21,6 +21,8 @@ Features:
   - GET /health/db performs a DB ping (SELECT 1)
   - Actuator: /actuator/health, /actuator/info
 - CORS enabled (permissive for dev)
+  - Global CORS allows any origin, methods, and headers with allowCredentials=false.
+  - /health and /health/db are accessible cross-origin from preview domains and via curl.
 - Profiles:
   - dev: H2 in-memory database (PostgreSQL compatibility mode)
   - prod: PostgreSQL (explicit driver and PostgreSQL dialect set in application.yaml to avoid H2 fallback)
