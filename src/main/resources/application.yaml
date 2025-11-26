@@ -11,7 +11,7 @@ spring:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        # Do NOT set a global PostgreSQL dialect; dev (H2) should auto-detect to avoid PG-specific DDL.
         jdbc:
           time_zone: UTC
 
@@ -40,6 +40,12 @@ spring:
     driver-class-name: org.h2.Driver
     username: ${SPRING_DATASOURCE_USERNAME:sa}
     password: ${SPRING_DATASOURCE_PASSWORD:}
+  jpa:
+    properties:
+      hibernate:
+        # Allow Hibernate to auto-detect H2; alternatively could set H2Dialect explicitly if desired:
+        # dialect: org.hibernate.dialect.H2Dialect
+        format_sql: false
   h2:
     console:
       enabled: true

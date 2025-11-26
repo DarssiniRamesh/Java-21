@@ -46,14 +46,26 @@ Runtime and port:
 - The application remains packaged and started via spring-boot-maven-plugin and binds to 0.0.0.0:3001 by default (configurable using SERVER_PORT).
 
 Run:
-- Dev (H2):
-  - SPRING_PROFILES_ACTIVE=dev SERVER_PORT=3001 ./mvnw spring-boot:run
+- Dev (H2) default:
+  - ./mvnw spring-boot:run
+  - or explicitly with profile: SPRING_PROFILES_ACTIVE=dev SERVER_PORT=3001 ./mvnw spring-boot:run
+  Notes:
+  - Uses in-memory H2 with PostgreSQL compatibility mode.
+  - No PostgreSQL server required.
 - Prod (PostgreSQL):
-  - SPRING_PROFILES_ACTIVE=prod \
+  - Ensure PostgreSQL is running (e.g., via compose under ../postgres-db_workspace/postgres-db).
+  - Run with env vars:
+    SPRING_PROFILES_ACTIVE=prod \
     SPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5432/modernrepo" \
     SPRING_DATASOURCE_USERNAME=postgres \
     SPRING_DATASOURCE_PASSWORD=postgres \
     SERVER_PORT=3001 \
+    ./mvnw spring-boot:run
+  - Alternatively, PGSPRING_* names are also supported:
+    SPRING_PROFILES_ACTIVE=prod \
+    PGSPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5432/modernrepo" \
+    PGSPRING_DATASOURCE_USERNAME=postgres \
+    PGSPRING_DATASOURCE_PASSWORD=postgres \
     ./mvnw spring-boot:run
 
 API Highlights:
