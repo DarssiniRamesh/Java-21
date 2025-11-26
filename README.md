@@ -24,6 +24,20 @@ Build:
 - Build:
   - ./mvnw -q -DskipTests package
 
+Temporary note: Java release target for CI
+- The project is designed for Java 21 at runtime with Spring Boot 3.3.x. However, the current CI environment does not provide JDK 21.
+- To keep builds green, the Maven Compiler Plugin is configured to compile with release 17 (see pom.xml: <maven.compiler.release>17</maven.compiler.release>).
+- No Java language features beyond 17 are used in this codebase (records, switch expressions, var, etc. are Java 14–17 features and compatible). Files use jakarta.* namespaces required by Spring Boot 3 and are compatible with Java 17.
+- When your environment provides JDK 21, switch back by:
+  1) Updating pom.xml properties:
+     <java.version>21</java.version>
+     <maven.compiler.release>21</maven.compiler.release>
+  2) Ensuring the JDK used by Maven is 21 (e.g., export JAVA_HOME to a JDK 21 installation or configure ~/.m2/toolchains.xml).
+  3) Rebuilding: ./mvnw -q -DskipTests package
+
+Runtime and port:
+- The application remains packaged and started via spring-boot-maven-plugin and binds to 0.0.0.0:3001 by default (configurable using SERVER_PORT).
+
 Run:
 - Dev (H2):
   - SPRING_PROFILES_ACTIVE=dev SERVER_PORT=3001 ./mvnw spring-boot:run

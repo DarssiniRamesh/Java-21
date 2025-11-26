@@ -18,6 +18,8 @@
     <description>Java 21 Spring Boot 3.3.x backend with health endpoint and OpenAPI</description>
 
     <properties>
+        <!-- Temporary CI compatibility: compile to Java 17 bytecode while keeping source compatible.
+             Switch these back to 21 when CI JDK 21 is available. -->
         <java.version>17</java.version>
         <maven.compiler.release>17</maven.compiler.release>
     </properties>
