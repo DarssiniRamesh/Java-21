@@ -136,3 +136,40 @@
 2025-11-26 06:10:06,485 - Knowledge - INFO - [WEBSOCKET] Sent: Type=progress_update, Size: 240, Duration: 0ms
 2025-11-26 06:10:06,693 - Knowledge - INFO - Saving knowledge to Redis...
 2025-11-26 06:10:06,871 - Knowledge - INFO - Knowledge saved to Redis successfully
+2025-11-26 06:16:46,035 - Knowledge - INFO - Created shared MongoDB connection pool
+2025-11-26 06:16:46,368 - Knowledge - INFO - Starting Knowledge Graph processing with 20 threads
+2025-11-26 06:16:46,557 - Knowledge - INFO - Initial configuration: chunk_size=65536, max_cache_size=500
+2025-11-26 06:16:46,744 - Knowledge - INFO - Knowledge Graph concurrency configuration: workers=20, max_batch_size=25, max_concurrent_llm_calls=50
+2025-11-26 09:38:53,252 - Knowledge - INFO - Created shared MongoDB connection pool
+2025-11-26 09:38:53,562 - Knowledge - INFO - Starting Knowledge Graph processing with 20 threads
+2025-11-26 09:38:53,743 - Knowledge - INFO - Initial configuration: chunk_size=65536, max_cache_size=500
+2025-11-26 09:38:53,902 - Knowledge - INFO - Knowledge Graph concurrency configuration: workers=20, max_batch_size=25, max_concurrent_llm_calls=50
+2025-11-26 09:38:54,798 - Knowledge - INFO - 🔍 _load_persisted_knowledge called - checking for Redis optimization
+2025-11-26 09:38:54,965 - Knowledge - WARNING - ❌ load_from_redis method not found - Redis support not attached
+2025-11-26 09:38:55,118 - Knowledge - INFO - load persisted knowledge: begin
+2025-11-26 09:38:55,307 - Knowledge - INFO - Persisted knowledge files in /app/data/T0015/269742/b2499tk/Java-21/.knowledge have been renamed to use .json
+2025-11-26 09:38:55,529 - Knowledge - INFO - Found code-base-name: https://github.com/DarssiniRamesh/Java-21.git:main
+2025-11-26 09:38:55,700 - Knowledge - INFO - Found code_base: <app.utils.kg_build.knowledge.KnowledgeCodeBase object at 0x7fa8b6d6f190>
+2025-11-26 09:38:55,982 - Knowledge - INFO - Found code-base-name: https://github.com/DarssiniRamesh/Java-21.git:main
+2025-11-26 09:38:56,133 - Knowledge - INFO - Found code_base: <app.utils.kg_build.knowledge.KnowledgeCodeBase object at 0x7fa8b6d6f190>
+2025-11-26 09:38:56,411 - Knowledge - INFO - persist ingested knowledge for /app/data/T0015/269742/b2499tk/Java-21/README.md
+2025-11-26 09:38:56,644 - Knowledge - INFO - [MONGODB_OP] Completed: persist, Collection: file_info, Duration: 81ms
+2025-11-26 09:38:57,691 - Knowledge - INFO - [REDIS_OP] Completed: store_embedding, Key: README.md, Duration: 819ms
+2025-11-26 09:38:57,863 - Knowledge - INFO - persist search terms embedding for README.md
+2025-11-26 09:38:58,032 - Knowledge - INFO - process ingested knowledge for /app/data/T0015/269742/b2499tk/Java-21/README.md
+2025-11-26 09:38:58,238 - Knowledge - INFO - Loaded 1 files from persisted knowledge
+2025-11-26 09:38:58,413 - Knowledge - INFO - load persisted knowledge: end
+2025-11-26 09:38:58,624 - Knowledge - INFO - Redis support added with prefix knowledge:b2499tk:
+2025-11-26 09:38:58,812 - Knowledge - INFO - Starting knowledge initialization for ID: Rkpekj-b2499tk
+2025-11-26 09:38:59,006 - Knowledge - INFO - 🔍 Checking Redis for build_id: b2499tk
+2025-11-26 09:38:59,177 - Knowledge - INFO - 🔍 Full session ID: Rkpekj-b2499tk
+2025-11-26 09:38:59,349 - Knowledge - INFO - 🔍 Redis prefix will be: knowledge:b2499tk:
+2025-11-26 09:38:59,558 - Knowledge - INFO - 🔍 Using attached load_from_redis() method
+2025-11-26 09:38:59,762 - Knowledge - INFO - 🔍 Attempting to load knowledge from Redis...
+2025-11-26 09:38:59,962 - Knowledge - INFO - 🔍 Using derived instance_id for Redis lookup: b2499tk
+2025-11-26 09:39:02,824 - Knowledge - INFO - ✅ Redis cache found! Loading knowledge...
+2025-11-26 09:39:02,988 - Knowledge - INFO - ✅ Successfully loaded from Redis: 1 files
+2025-11-26 09:39:03,183 - Knowledge - INFO - ✅ Redis load complete: 1 files in 3.62s
+2025-11-26 09:39:03,366 - Knowledge - INFO - ⚡ Total Redis path: 3.62s (vs ~300s from disk)
+2025-11-26 09:39:03,540 - Knowledge - INFO - Saving knowledge to Redis...
+2025-11-26 09:39:03,762 - Knowledge - INFO - Knowledge saved to Redis successfully
