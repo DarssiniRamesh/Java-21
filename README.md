@@ -33,6 +33,18 @@ Run (local):
 Maven Wrapper:
 - This project includes the Maven Wrapper (mvnw, mvnw.cmd, and .mvn/wrapper/*).
 - Wrapper scripts are aligned with Maven Wrapper 3.2.0 and will download Apache Maven 3.9.7 as configured.
-- If mvnw is not executable on your system, run: chmod +x mvnw
+- The wrapper configuration is defined in .mvn/wrapper/maven-wrapper.properties with
+  - wrapperUrl pointing to maven-wrapper-3.2.0.jar
+  - distributionUrl pointing to Apache Maven 3.9.7
+- The mvnw script resolves the wrapper JAR at .mvn/wrapper/maven-wrapper.jar and will download it if missing.
 
-Note: Do not hardcode ports; preview system maps ports automatically.
+Fallback script (environment without wrapper JAR downloads):
+- You can use the provided ./mvn.sh which simply invokes the system 'mvn' command if available:
+  - chmod +x mvn.sh
+  - ./mvn.sh -q -DskipTests package
+  - ./mvn.sh spring-boot:run
+
+Note:
+- Do not hardcode ports; preview system maps ports automatically.
+- pom.xml is configured to fall back to release/source/target=17 so builds succeed where only JDK 17 is available.
+- Ensure mvnw is executable: chmod +x mvnw
