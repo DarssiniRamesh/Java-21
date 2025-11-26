@@ -23,7 +23,7 @@ Features:
 - CORS enabled (permissive for dev)
 - Profiles:
   - dev: H2 in-memory database (PostgreSQL compatibility mode)
-  - prod: PostgreSQL
+  - prod: PostgreSQL (explicit driver and PostgreSQL dialect set in application.yaml to avoid H2 fallback)
 
 Build:
 - Ensure wrapper is executable:

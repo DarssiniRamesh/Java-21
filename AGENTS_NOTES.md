@@ -2,7 +2,10 @@
 
 - Profiles:
   - dev: H2 in-memory (PostgreSQL mode)
-  - prod: PostgreSQL (env overrides via SPRING_DATASOURCE_* and SPRING_JPA_HIBERNATE_DDL_AUTO)
+  - prod: PostgreSQL (env overrides via SPRING_DATASOURCE_* and SPRING_JPA_HIBERNATE_DDL_AUTO). The prod profile explicitly sets:
+    - spring.datasource.driver-class-name=org.postgresql.Driver
+    - hibernate dialect to PostgreSQLDialect
+    This prevents accidental H2 selection in prod.
 
 - Startup notes:
   - No references to any db_visualizer directory exist in this project. Backend starts independently.

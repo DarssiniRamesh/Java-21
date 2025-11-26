@@ -26,7 +26,7 @@ public class Question {
 
     @NotBlank
     @Lob
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
     @Column(nullable = false, updatable = false)
