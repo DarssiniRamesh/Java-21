@@ -9,7 +9,15 @@
 #   # Dev (H2) on port 3001
 #   SPRING_PROFILES_ACTIVE=dev SERVER_PORT=3001 ./start.sh
 #
-#   # Prod (PostgreSQL) on port 3001
+#   # Prod (PostgreSQL) on port 3001 (supports PGSPRING_* or SPRING_* env vars)
+#   SPRING_PROFILES_ACTIVE=prod \
+#   PGSPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5000/modernrepo" \
+#   PGSPRING_DATASOURCE_USERNAME="modernuser" \
+#   PGSPRING_DATASOURCE_PASSWORD="modernpass" \
+#   SERVER_PORT=3001 \
+#   ./start.sh
+#
+#   # Alternatively using standard Spring names:
 #   SPRING_PROFILES_ACTIVE=prod \
 #   SPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5000/modernrepo" \
 #   SPRING_DATASOURCE_USERNAME="modernuser" \
