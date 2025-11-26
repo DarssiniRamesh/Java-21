@@ -20,7 +20,7 @@ public class OpenApiConfig {
         return new OpenAPI()
             .info(new Info()
                 .title("Java 21 Backend API")
-                .description("Spring Boot 3.3.x API with OpenAPI and health endpoint")
+                .description("Spring Boot 3.3.x API with OpenAPI, CRUD for Questions/Answers, and health endpoints")
                 .version("v0.0.1")
                 .contact(new Contact().name("API Support"))
             )
