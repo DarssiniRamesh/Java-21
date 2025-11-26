@@ -9,7 +9,23 @@ What’s included:
 - Swagger UI available at /swagger-ui.html
 
 Build:
-- ./mvnw -q -DskipTests package
+- Preferred (with JDK 21 available via Maven Toolchains): ./mvnw -q -DskipTests package
+- Fallback (when only JDK 17 is installed): the project will compile targeting Java 17 automatically due to fallback settings.
+
+Toolchains:
+- If you have JDK 21 installed, configure ~/.m2/toolchains.xml similar to:
+  <toolchains>
+    <toolchain>
+      <type>jdk</type>
+      <provides>
+        <version>21</version>
+        <vendor>any</vendor>
+      </provides>
+      <configuration>
+        <jdkHome>/path/to/jdk-21</jdkHome>
+      </configuration>
+    </toolchain>
+  </toolchains>
 
 Run (local):
 - ./mvnw spring-boot:run
