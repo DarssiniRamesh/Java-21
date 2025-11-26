@@ -20,9 +20,10 @@ Features:
   - GET /health returns {"status":"ok"}
   - GET /health/db performs a DB ping (SELECT 1)
   - Actuator: /actuator/health, /actuator/info
-- CORS enabled (permissive for dev)
-  - Global CORS allows any origin, methods, and headers with allowCredentials=false.
-  - /health and /health/db are accessible cross-origin from preview domains and via curl.
+- CORS:
+  - Allow-all CORS is enabled by default via a configuration flag (ALLOW_ALL_CORS=true).
+  - When enabled, any origin, method, and header are allowed with allowCredentials=false.
+  - To tighten CORS for production, set ALLOW_ALL_CORS=false and configure CORS at a proxy or security layer.
 - Profiles:
   - dev: H2 in-memory database (PostgreSQL compatibility mode)
   - prod: PostgreSQL (explicit driver and PostgreSQL dialect set in application.yaml to avoid H2 fallback)
@@ -83,6 +84,10 @@ API Highlights:
 Config:
 - Server binds to 0.0.0.0:3001 by default (override via SERVER_ADDRESS/SERVER_PORT).
 - Env var overrides for datasource and JPA DDL behavior.
+- CORS flag:
+  - ALLOW_ALL_CORS=true (default): Enables global allow-all CORS (any origin/method/header, allowCredentials=false).
+  - To disable: set ALLOW_ALL_CORS=false (e.g., ALLOW_ALL_CORS=false ./mvnw spring-boot:run).
+  - Property key in application.yaml: app.cors.allow-all.
 - See .env.example for common environment variables.
 
 Notes:
